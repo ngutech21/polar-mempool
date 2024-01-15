@@ -13,7 +13,7 @@ services:
     volumes:
       - ./data/:/data/.electrs/
     networks:
-      - 1_default
+      - polar-network-1_default
 
   mempool-web:
     restart: on-failure
@@ -26,7 +26,7 @@ services:
     ports:
       - 8080:8080
     networks:
-      - 1_default
+      - polar-network-1_default
 
   mempool-api:
     depends_on:
@@ -63,7 +63,7 @@ services:
     volumes:
       - ${HOME}/.polar/networks/1/volumes/lnd/:/lnd
     networks:
-      - 1_default
+      - polar-network-1_default
 
   mempool-db:
     environment:
@@ -73,8 +73,8 @@ services:
       MYSQL_ROOT_PASSWORD: "admin"
     image: mariadb:10.5.21
     networks:
-      - 1_default
+      - polar-network-1_default
 
 networks:
-  1_default:
+  polar-network-1_default:
     external: true
